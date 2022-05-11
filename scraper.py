@@ -5,7 +5,7 @@ def get_citations_needed_count(URL):
   count = 0
   page = requests.get(URL)
   soup = BeautifulSoup(page.content, 'html.parser')
-  citations = soup.find_all(title="Citations needed")
+  citations = soup.find_all(title="Wikipedia:Citation needed")
 
   for citation in citations:
     count += 1
@@ -16,7 +16,7 @@ def get_citations_needed_report(URL):
   string = ""
   page = requests.get(URL)
   soup = BeautifulSoup(page.content, 'html.parser')
-  citations = soup.find_all(title="Citations needed")
+  citations = soup.find_all(title="Wikipedia:Citation needed")
   
   for citation in citations:
     string += f'{citation.parent.parent.parent.text}\n'
